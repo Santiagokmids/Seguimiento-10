@@ -52,7 +52,7 @@
 			    conta = (int)(conta);
 			    double segu = conta % 60;
 	            message += "El piloto "+pilots[i].getName()+" obtuvo un promedio de "+horas+ " horas, " +minu+ " minutos y "
-	              +segu+ " segundos" ;
+	              +segu+ " segundos\n" ;
 	            exit = false;
 	      }
 	   }

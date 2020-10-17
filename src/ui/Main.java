@@ -128,9 +128,7 @@
 	     System.out.println("----------------------------------------------------------------");
 	     System.out.println("    A CONTINUACION VERA LOS PROMEDIOS DE TODOS LOS PILOTOS...  ");
 	     System.out.println("----------------------------------------------------------------");
-	     for(int o = 0;o<mainChampionship.getRaces();o++){
 	     String message = mainChampionship.showAverageTimes();
 	     System.out.println(message);
-	      }
 	   }
 	}
