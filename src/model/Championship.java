@@ -1,55 +1,78 @@
-package model;
+	package model;
 
-public class Championship{
+	public class Championship{
 
-  //Relationships
-	private Pilot[] pilots;
+	  //Relationships
+		private Pilot[]pilots;
 
-  //Atributes
-    private int years;
-    private int races;	
+	  //Atributes
+	    private int years;
+	    private int races;	
 
-  //Constructor
-    public Championship(int years, int races){
-    	this.years = years;
-    	this.races = races;
-    }
+	  //Constructor
+	    public Championship(int years, int races){
+	    	this.years = years;
+	    	this.races = races;
+	    	pilots = new Pilot[15];
+	    }
 
-    //Methods
-    public void addPilot(String name, int age, Team team, int scores[]){
-    	for(int i = 0;i<14;i++){
-    		if (pilot[i] == null){
-    			pilot[i] = new Pilot(name,age,team,scores[]);
-    		}
-    	}
-    }
+	    //Methods
+	    public void addPilot(String name, int age, String team, int scores[]){
+	    	boolean exit = true;
+	    	if (findPilot(name)){  
+	    	for(int i = 0;i<15 && exit;i++){
+	    		if (pilots[i] == null){
+	    			pilots[i] = new Pilot(name,age,team,scores);
+	    			exit = false;
+	    		}
+	    	}
+	      }
+	    }
 
-    public boolean findPilot(String name){
-    	boolean find = true;
-    	for(int i=0;i<14 || find != false;i++)
-    	if(name.equalsIgnoreCase(pilots[i].getName()) && pilots[i] != null){
-    		find = false;
-    	}
-    }
+	    public boolean findPilot(String name){
+	    	boolean find = true;
+	    	for(int i=0;i<15 && find;i++){
+	    	 if(pilots[i] != null && pilots[i].getName().equalsIgnoreCase(name)){
+	    		find = false;
+	    	       }
+	       }
+	    	return find;
+	    }
 
-    public String showAverage(){
-    	String message = "";
-    	boolean exit = true;
-        for(int i = 0;i<14 || exit != false;i++){
-    	 if(pilots[i] != null){
-    		timeprom = pilots.calculateAverage();
-    		timeprom = (int)(timeprom);
-	    	horas1 = (int)(timeprom/3600);
-		    conta1 = timeprom%3600;
-            minu1 = (int)(conta1/60);
-		    conta1 = (int)(conta1);
-		    seg1 = conta1 % 60;
-	        find = false;
+	    public String showAverageTimes(){
+	    	String message = "";
+	    	boolean exit = true;
+	        for(int i = 0;i<15 || exit;i++){
+	    	 if(pilots[i] != null){
+	    		double timeprom = pilots[i].calculateAverage();
+	    	    timeprom = (int)(timeprom);
+		    	double horas = (int)(timeprom/3600);
+			    int conta = (int)timeprom % 3600;
+	            double minu = (int)(conta/60);
+			    conta = (int)(conta);
+			    double segu = conta % 60;
+	            message += "El piloto "+pilots[i].getName()+" obtuvo un promedio de "+horas+ " horas, " +minu+ " minutos y "
+	              +segu+ " segundos" ;
+	            exit = false;
+	      }
+	   }
+	   return message;
+	}
 
-            message = ("El piloto "+pilots[i].getName()+" obtuvo un promedio de "+horas[l]+ " horas, " +minu[l]+ "minutos y "
-              +segu[l]+ " segundos" );
-    	} 
-      }
-      return message;
-   }
-}
+	 public int getYears() {
+			return years;
+	  }
+
+	 public void setYears(int years) {
+			this.years = years;
+	  }
+
+	 public int getRaces() {
+			return races;
+	  }
+
+	 public void setRaces(int races) {
+			this.races = races;
+	  }
+
+	}
