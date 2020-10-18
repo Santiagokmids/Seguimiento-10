@@ -23,6 +23,7 @@
 	    	for(int i = 0;i<15 && exit;i++){
 	    		if (pilots[i] == null){
 	    			pilots[i] = new Pilot(name,age,team,scores);
+	    			pilots[i].addTeam(pilots[i].getTeam());
 	    			exit = false;
 	    		}
 	    	}
@@ -73,6 +74,24 @@
 
 	 public void setRaces(int races) {
 			this.races = races;
+	  }
+
+	  public String verificTeam(String team){
+	  	String message = "";
+	  	if(!team.equalsIgnoreCase("Scuderia Ferrari") && !team.equalsIgnoreCase("Mclaren F1 Team") && !team.equalsIgnoreCase("Red Bull Racing")
+	  		&& !team.equalsIgnoreCase("Mercedes AMG") && !team.equalsIgnoreCase("Racing Point") && !team.equalsIgnoreCase("Alfa Romeo")
+	  		&& !team.equalsIgnoreCase("Renault") && !team.equalsIgnoreCase("Wiliams")){
+	  		message = "El equipo no existe";
+	  	}
+	  	return message;
+	  }
+
+	  public Pilot[]getPilots(){
+	  	return pilots;
+	  }
+
+	  public void setPilots(Pilot []pilots){
+	  	this.pilots = pilots;
 	  }
 
 	}
